@@ -11,6 +11,7 @@
 \RequirePackage{tikz}
 \usetikzlibrary{decorations,decorations.markings,positioning}
 \RequirePackage{array,bookmark,ccicons,hologo,listings,multicol,qrcode,ragged2e,siunitx,unicode-math,xcolor}
+\RequirePackage[fixed]{fontawesome5}
 \RequirePackage{graphicx,tcolorbox} %Loading the package
 \tcbuselibrary{skins} % skins for tcolorbox
 \graphicspath{{fig/}}
@@ -218,6 +219,18 @@
         \xeCJK_copy_inter_class_toks:nnnn {#1} { PoZheHao } {#1} { FullRight }
       }
   }
+
+\@ifpackageloaded{ctex}{%
+  \renewcommand{\metropolis@strut}{%
+    \vphantom{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()\rule[-6pt]{1em}{0pt}}%
+  }
+}{}
+
+\@ifpackageloaded{CJK}{%
+  \renewcommand{\metropolis@strut}{%
+    \vphantom{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()\rule[-6pt]{1em}{0pt}}%
+  }
+}{}
 
 % Macros
 \newcommand\link[1]{\href{#1}{\faLink}}

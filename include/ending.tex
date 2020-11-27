@@ -1,0 +1,69 @@
+\begin{frame}[fragile]
+\frametitle{示例}
+\begin{kotlincode}[basicstyle=\scriptsize\ttfamily,emph={[1]level}]
+/**
+ * 按照层级取出编码
+ *
+ * eg. "000a00".extract(2) -> "000a"
+ */
+fun String.extact(level: Int) = when (level) {
+    0 -> this
+    else -> this.substring(0, 2 * level)
+}
+\end{kotlincode}
+\end{frame}
+
+\section{参考}
+\begin{frame}[fragile]
+\frametitle{参考文献}
+\begin{multicols}{2}
+\newcommand\BOOK[1]{\textbf{#1}}
+\newcommand\TAG[1]{[#1]}
+\begin{thebibliography}{99}
+  \bibitem{}
+    林莲枝．
+    \newblock \BOOK{漫谈 \LaTeX{} 排版常见概念误区：别把 \LaTeX{} 当 Word 用！}\TAG{EB/OL}. 2018.
+    \newblock PDF:
+      \href{http://static.latexstudio.net/wp-content/uploads/2018/03/LianTze-presentation-0320-forReading.pdf}{\faDownload}
+  \bibitem{}
+    Wikibooks.
+    \newblock \BOOK{\LaTeX{}---Wikibooks, The Free Textbook Project} \TAG{EB/OL}.
+    \newblock \url{https://en.wikibooks.org/wiki/LaTeX}
+  \bibitem{}
+    刘庆．
+    \newblock \BOOK{孔雀计划：中文字体排印的思路} \TAG{EB/OL}.
+    \newblock \url{https://thetype.com/kongque}
+\end{thebibliography}
+\end{multicols}
+\end{frame}
+
+\begin{frame}{关于}
+\begin{table}[]
+\begin{tabular}{cll}
+\faPaintRoller & \textbf{主题}     & Yzl            \\
+\faFont        & \textbf{正文字体} & 更纱黑体 + Roboto  \\
+\faTextWidth   & \textbf{等宽字体} & \texttt{JetBrains Mono} \\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[c,fragile]
+\frametitle{调色板}
+\begin{center}
+\colorpalette[primary palette={yzlblue,yzlgreen,yzlgray}, secondary palette={},
+primary variation=logoyellow, init text color=white, title text color=logoblack, title font=\bfseries, variation font=\ttfamily]{}
+\colorpalette[primary palette={yzlred,yzlorange,yzlpink}, secondary palette={},
+primary variation=logoblack, init text color=white, title text color=logoyellow, title font=\bfseries, variation font=\ttfamily]{}
+\end{center}
+\end{frame}
+
+\begin{frame}[standout]
+\begin{center}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}
+        \node[anchor=center,inner sep=0,opacity=0.5] at (current page.center) {\includegraphics[width=4cm]{fig/logo_color.pdf}};
+        \node[align=center,logoblack,font={\Huge\ttfamily}] at (current page.center) {Happy \textit{\textbackslash Coding}};
+    \end{tikzpicture}
+\end{center}
+\end{frame}
