@@ -19,3 +19,7 @@
 
 % just for the testing section
 \newcommand{\testing}[1]{\noindent\leavevmode#1\rlap{G}\google\llap{e} \quad \rlap{Google}\google \qquad \google\llap{Google}\par}
+
+\newlength\htK\newlength\dpl
+\protected\def\kotlin{\settoheight{\htK}{K}\settodepth{\dpl}{l}%
+\raisebox{-\dpl}{\includegraphics[height=\htK+\dpl]{fig/Kotlin-logo.png}}}

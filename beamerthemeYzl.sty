@@ -61,6 +61,14 @@
 \setbeamerfont{frametitle}{size=\large, series=\bfseries}
 \setbeamerfont{caption}{size=\footnotesize, series=\bfseries}
 \setbeamerfont{footnote}{size=\tiny}
+\setbeamerfont{bibliography entry author}{size=\footnotesize,%
+series=\normalfont}
+\setbeamerfont{bibliography entry title}{size=\footnotesize,%
+series=\bfseries}
+\setbeamerfont{bibliography entry location}{size=\footnotesize,%
+series=\normalfont}
+\setbeamerfont{bibliography entry note}{size=\footnotesize,%
+series=\normalfont}
 \setbeamertemplate{frametitle continuation}[from second]
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamercolor{palette primary}{%
@@ -161,8 +169,8 @@
   breakatwhitespace = true,
   % basewidth    = 0.54em,
   basicstyle   = \small\ttfamily,
-  emphstyle    = [1]\itshape\color{yzlpink},
-  emphstyle    = [2]\color{yzlred}
+  emphstyle    = [1]\itshape\color{emph1},
+  emphstyle    = [2]\color{emph2}
 }
 \lstdefinestyle{style@latex}{
   language     = [latex]TeX,

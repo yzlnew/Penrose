@@ -1,1 +1,59 @@
 \section{和NPE说再见}
+\begin{frame}[fragile]
+    \frametitle{空引用异常}
+    \begin{quotebox}[yzlred]
+        Java 最常见的运行时异常
+    \end{quotebox}
+    \begin{javacode}[basicstyle=\scriptsize\ttfamily,emph={[1]sample}]
+    String sample = null;
+    System.out.println(sample.toString()); // NullPointerException!
+    \end{javacode}
+    \begin{quotebox}
+        \kotlin{} 用类型系统消除代码中的 NPE
+    \end{quotebox}
+    \begin{kotlincode}[basicstyle=\scriptsize\ttfamily]
+    var a: String = "abc"
+    a = null // 编译错误
+    var b: String? = "abd" // ? 表示变量可空
+    val l = b.length // 编译错误，因为 b 可空
+    val l = b?.length // 安全调用，l 的类型为可空整型 Int?
+    // let 作用域函数，非空后执行
+    l?.let { …… // 只有非空才会执行 }
+    \end{kotlincode}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Elvis 操作符}
+    \begin{quotebox}
+        \textcolor{yzlblue}{\texttt{?:}}用来缩写 |if not null and else|
+    \end{quotebox}
+    \begin{kotlincode}[basicstyle=\scriptsize\ttfamily]
+    // 返回值
+    val files = File("Test").listFiles()
+    println(files?.size ?: "empty")
+    // 执行语句
+    val values = ……
+    val email = values["email"] ?: throw IllegalStateException("Email is missing!")
+    \end{kotlincode}
+    \nonumberfootnote{\faInfoCircle{}\texttt{?:}如果侧过头，可以看到猫王}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{类型转换}
+    \begin{kotlincode}[basicstyle=\scriptsize\ttfamily]
+    // !! 非空断言操作符，强制转换，若空会抛出 NPE
+    val l = b!!.length
+    // 用 as? 安全转换
+    val aInt: Int? = a as? Int
+    // 智能转换可空为非空
+    val p = Person(first = "Zhiling", middle = null, last = "Ye")
+    if (p.middle != null) {
+        val middleNameLength = p.middle.length // 这里变量的类型为 Int
+    }
+    // 集合过滤非空元素
+    val nullableList: List<Int?> = listOf(1, 2, null, 4)
+    val intList: List<Int> = nullableList.filterNotNull()
+    \end{kotlincode}
+    \nonumberfootnote{\faExclamationCircle{}如非必要，请勿使用\textcolor{yzlred}{\texttt{!!}}操作符}
+\end{frame}
+

@@ -1,1 +1,155 @@
 \section{再短一点}
+\begin{frame}[fragile]
+\frametitle{数据类}
+\begin{quotebox}[yzlred]
+    构造一个类来传输数据
+\end{quotebox}
+\begin{javacode}[basicstyle=\scriptsize\ttfamily,emph={[1]Customer}]
+    // 好多行
+    public class Customer {
+        private String mName;
+        private String mEmail;
+        public Customer(String name, String email) {
+            this.mName = name;
+            this.mEmail = email;
+        }
+        public String getName() { return mName; }
+        public void setName(String name) { this.mName = name }
+        public String getEmail() { return mEmail; }
+        public void setEmail(String email) { this.mEmail = email }
+    }
+\end{javacode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{数据类}
+\begin{quotebox}
+    |data class| 来实现 Data transfer object
+\end{quotebox}
+\begin{kotlincode}[emph={[1]Customer}]
+    // 一行
+    data class Customer(val name: String, val email: String)
+\end{kotlincode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{单例模式}
+\begin{quotebox}[yzlred]
+    饿汉式，非 lazy loading，线程安全
+\end{quotebox}
+\begin{javacode}[basicstyle=\scriptsize\ttfamily,emph={[1]MySingleton}]
+    public final class MySingleton {
+        private static final int myProperty = 3;
+        private static final MySingleton INSTANCE = new MySingleton();
+        private MySingleton() {}
+        public final int getMyProperty() {
+            return myProperty;
+        }
+        public final void myFunction() {
+            return "Hello";
+        }
+    }
+\end{javacode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{单例模式}
+\begin{quotebox}
+    |object| 来实现 Data transfer object
+\end{quotebox}
+\begin{kotlincode}[emph={[1]MySingleton}]
+    object MySingleton {
+        val myProperty = 3
+        fun myFunction() = "Hello"
+    }
+\end{kotlincode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{集合容器}
+\begin{quotebox}
+    快速创建 |Array, List, Set, Map|
+\end{quotebox}
+\begin{kotlincode}
+    val strings = arrayOf("a", "b", "c")
+    // 不可变集合
+    var numList = listOf(1, 2, 3)
+    // 可变集合
+    var numMap = mutableMapOf(1 to "one", 2 to "two", 3 to "three")
+\end{kotlincode}
+\nonumberfootnote{\faInfoCircle{} \texttt{to} 为生成 \texttt{Pair} 对象的中缀运算符}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{函数式}
+\begin{quotebox}[yzlgreen]
+    下面的代码会输出什么？
+\end{quotebox}
+\begin{kotlincode}[emph={[1]sortedBy,filter,map,forEach}]
+    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+    fruits
+      .filter { it.startsWith("a") }
+      .sortedBy { it }
+      .map { it.toUpperCase() }
+      .forEach { println(it) }
+\end{kotlincode}
+\nonumberfootnote{\faInfoCircle{} 像使用 \faPython{}\texttt{Pandas} 一样，同样有 \texttt{flatMap, groupBy, reduce} 等操作}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{扩展函数和 \texttt{when} 表达式}
+\begin{quotebox}
+    扩展函数可以增加已有类的功能
+\end{quotebox}
+\begin{kotlincode}
+    fun String.reply(): String =
+        when (this) {
+            "Hello"    -> "World"
+            "Bye"      -> "Bye"
+            else       -> "Unknown"
+        }
+    // 使用
+    "Hello".reply() // "World"
+\end{kotlincode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{作用域函数}
+\begin{quotebox}
+    用一种简洁明了的方式在对象的上下文中执行代码块
+\end{quotebox}
+\begin{kotlincode}[emph={[1]adam,result}]
+    // 用 apply 来初始化
+    val adam = Person("Adam").apply {
+        it.age = 20  // it 可以省略
+        it.city = "London"
+    }
+    // 初始化并返回计算结果
+    val result = service.run {
+        port = 8080
+        query(prepareRequest() + " to port $port")
+    }
+\end{kotlincode}
+\nonumberfootnote{\faInfoCircle{} \texttt{\$port} 字符串内插，甚至可以使用表达式}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{作用域函数}
+\begin{quotebox}
+    不同的是这个对象在块中如何使用，以及整个表达式的结果是什么
+\end{quotebox}
+
+\begin{table}[]
+\begin{tabular}{llll}
+\textbf{函数} & \textbf{对象引用} & \textbf{返回值} & \textbf{是否是扩展函数}\\
+\texttt{let}   & it   & Lambda 表达式结果 & 是\\
+\texttt{run}   & this & Lambda 表达式结果 & 是\\
+\texttt{run}   & -    & Lambda 表达式结果 & 不是：调用无需上下文对象\\
+\texttt{with}  & this & Lambda 表达式结果 & 不是：把上下文对象当做参数\\
+\texttt{apply} & this & 上下文对象        & 是\\
+\texttt{also}  & it   & 上下文对象        & 是\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+

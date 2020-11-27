@@ -1,43 +1,26 @@
-\begin{frame}[fragile]
-\frametitle{示例}
-\begin{kotlincode}[basicstyle=\scriptsize\ttfamily,emph={[1]level}]
-/**
- * 按照层级取出编码
- *
- * eg. "000a00".extract(2) -> "000a"
- */
-fun String.extact(level: Int) = when (level) {
-    0 -> this
-    else -> this.substring(0, 2 * level)
-}
-\end{kotlincode}
-\end{frame}
-
 \section{参考}
 \begin{frame}[fragile]
-\frametitle{参考文献}
-\begin{multicols}{2}
+\frametitle{参考资料}
 \newcommand\BOOK[1]{\textbf{#1}}
-\newcommand\TAG[1]{[#1]}
+\footnotesize
 \begin{thebibliography}{99}
   \bibitem{}
-    林莲枝．
-    \newblock \BOOK{漫谈 \LaTeX{} 排版常见概念误区：别把 \LaTeX{} 当 Word 用！}\TAG{EB/OL}. 2018.
-    \newblock PDF:
-      \href{http://static.latexstudio.net/wp-content/uploads/2018/03/LianTze-presentation-0320-forReading.pdf}{\faDownload}
+  JetBrains．
+    \newblock \BOOK{Kotlin 中文文档}
+    \newblock 链接：\link{https://www.kotlincn.net/docs/reference/}
   \bibitem{}
-    Wikibooks.
-    \newblock \BOOK{\LaTeX{}---Wikibooks, The Free Textbook Project} \TAG{EB/OL}.
-    \newblock \url{https://en.wikibooks.org/wiki/LaTeX}
+  Ken Kousen
+    \newblock \BOOK{Kotlin Cookbook: A Problem-Focused Approach}
+    \newblock 购买：\href{https://item.jd.com/12695637.html}{\faShoppingCart}
   \bibitem{}
-    刘庆．
-    \newblock \BOOK{孔雀计划：中文字体排印的思路} \TAG{EB/OL}.
-    \newblock \url{https://thetype.com/kongque}
+  Google.
+    \newblock \BOOK{Andorid Developers}
+    \newblock 链接：\link{https://developer.android.com/kotlin/}
 \end{thebibliography}
-\end{multicols}
+\nonumberfootnote{\faInfoCircle 实际查阅的为乔禹昂的译作《Kotlin编程实践》}
 \end{frame}
 
-\begin{frame}{关于}
+\begin{frame}[c]{关于}
 \begin{table}[]
 \begin{tabular}{cll}
 \faPaintRoller & \textbf{主题}     & Yzl            \\
@@ -45,6 +28,12 @@ fun String.extact(level: Int) = when (level) {
 \faTextWidth   & \textbf{等宽字体} & \texttt{JetBrains Mono} \\
 \end{tabular}
 \end{table}
+\vspace{0.4cm}
+\begin{center}
+    \small{Creative Commons Attribution-ShareAlike 4.0 International}\\
+  \huge
+  \faCreativeCommons\,\faCreativeCommonsBy\,\faCreativeCommonsSa
+\end{center}
 \end{frame}
 
 \begin{frame}[c,fragile]
