@@ -1,0 +1,244 @@
+% File              : beamerthemeYzl.sty
+% Author            : @yzlnew <yzlnew@gmail.com>
+% Date              : 06.01.2020
+% Last Modified Date: 24.11.2020
+% Last Modified By  : @yzlnew <yzlnew@gmail.com>
+% Adapted from Stone Zeng
+\ProvidesPackage{beamerthemeYzl}
+
+\usetheme[progressbar=none]{metropolis}
+
+\RequirePackage{tikz}
+\usetikzlibrary{decorations,decorations.markings,positioning}
+\RequirePackage{array,bookmark,ccicons,hologo,listings,multicol,qrcode,ragged2e,siunitx,unicode-math,xcolor}
+\RequirePackage{graphicx,tcolorbox} %Loading the package
+\tcbuselibrary{skins} % skins for tcolorbox
+\graphicspath{{fig/}}
+
+% Colors
+\definecolor{logoyellow}{HTML}{ffc805}
+\definecolor{logoblack}{HTML}{323337}
+\definecolor{yzlblue}{HTML}{0496FF}
+\definecolor{yzlgreen}{HTML}{709255}
+\definecolor{yzlred}{HTML}{DB4C40}
+\definecolor{yzlpink}{HTML}{FBACBE}
+\definecolor{yzlorange}{HTML}{FC814A}
+\definecolor{yzlyellow}{HTML}{ffc805}
+\definecolor{yzlgray}{HTML}{BBBAC6}
+\colorlet{keyword}{yzlblue}
+\colorlet{comment}{yzlgray}
+\colorlet{texcs}{yzlred}
+\colorlet{string}{yzlgreen}
+\colorlet{emph1}{yzlorange}
+\colorlet{emph2}{yzlpink}
+\colorlet{inline}{yzlblue}
+
+% Tcolorbox
+\newtcbox{\inlinebox}[1][yzlblue]{on line,colback=#1!20,colframe=#1,coltext=logoblack,arc=10pt}
+\newtcolorbox{quotebox}[1][yzlblue]{blanker,before skip=6pt,after skip=6pt,borderline west={3mm}{0pt}{#1},bottomrule=3mm,leftrule=5mm}
+
+% Beamer settings
+\renewcommand{\metropolis@colors@dark}{
+  \setbeamercolor{normal text}{%
+    fg=logoblack,
+    bg=black
+  }
+  \usebeamercolor[fg]{normal text}
+}
+\renewcommand{\metropolis@colors@light}{
+  \setbeamercolor{normal text}{%
+    fg=logoblack,
+    bg=black!4
+  }
+  \usebeamercolor[fg]{normal text}
+}
+
+\metroset{background=light}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont*{subtitle}{size=\large, shape=\itshape}
+\setbeamerfont{section title}{size=\Large, series=\bfseries}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{caption}{size=\footnotesize, series=\bfseries}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{frametitle continuation}[from second]
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamercolor{palette primary}{%
+  fg=logoblack,
+  bg=black!8
+}
+\setbeamercolor{section title}{
+  use=palette primary,
+  fg=palette primary.fg
+}
+\setbeamercolor{progress bar}{%
+  use=palette primary,
+  fg=logoyellow,
+  bg=palette primary.bg!50!black!30
+}
+\setbeamercolor{qed symbol}{fg=yzlgreen}
+\setbeamercolor{alerted text}{fg=yzlred}
+\setbeamercolor{example text}{fg=yzlblue}
+\AtBeginEnvironment{theorem}{%
+  \setbeamercolor{block title}{fg=yzlgreen}
+}
+\AtBeginEnvironment{proof}{%
+  \setbeamercolor{block title}{fg=yzlgreen}
+}
+\setbeamertemplate{itemize/enumerate subbody begin}{\footnotesize}
+\setbeamertemplate{caption}{\parbox{\textwidth}{\centering\insertcaption}\par}
+\setbeamertemplate{bibliography item}[text]
+\titlegraphic{%
+  \includegraphics[height=4ex]{penrose_black}
+}
+\addtobeamertemplate{title page}{
+    \tikz[remember picture,overlay]
+    \node[opacity=0.8,inner sep=0pt] at (10.5,-8){
+    \includegraphics[height=6cm]{city}};
+}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[%
+      wd=\paperwidth,%
+      sep=0pt,%
+      leftskip=\metropolis@frametitle@padding,%
+      rightskip=\metropolis@frametitle@padding,%
+    ]{frametitle}%
+  \metropolis@frametitlestrut@start%
+  \insertframetitle%
+  \nolinebreak%
+  \metropolis@frametitlestrut@end%
+  \hfill
+  \includegraphics[height=2ex,keepaspectratio]{logo_color}
+  \end{beamercolorbox}%
+}
+
+% PDF bookmark
+\apptocmd{\beamer@@frametitle}{%
+  \only<1>{\expandafter\ifnum\insertcontinuationcount<2\relax
+    \bookmark[page=\the\c@page,level=4]{#1}\fi}}{}{}
+
+% Code listings
+% Kotlin Support
+\lstdefinelanguage{Kotlin}{
+  comment=[l]{//},
+  commentstyle={\color{yzlgray}\ttfamily},
+  emph={delegate, filter, first, firstOrNull, forEach, lazy, map, mapNotNull, println, return@},
+  emphstyle={\color{yzlred}},
+  identifierstyle=\color{logoblack},
+  keywords={abstract, actual, as, as?, break, by, class, companion, continue, data, do, dynamic, else, enum, expect, false, final, for, fun, get, if, import, in, interface, internal, is, null, object, override, package, private, public, return, set, super, suspend, this, throw, true, try, typealias, val, var, vararg, when, where, while},
+  keywordstyle={\color{yzlblue}\bfseries},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[s]{"""*}{*"""},
+  ndkeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic, Array, Byte, Double, Float, Int, Integer, Iterable, Long, Runnable, Short, String},
+  ndkeywordstyle={\color{yzlorange}\bfseries},
+  sensitive=true,
+  stringstyle={\color{yzlgreen}\ttfamily},
+}
+\lstdefinestyle{style@java}{
+  language          = Java,
+  showspaces        = false,
+  showtabs          = false,
+  breaklines        = true,
+  showstringspaces  = false,
+  breakatwhitespace = true,
+  % basewidth    = 0.54em,
+  basicstyle   = \small\ttfamily,
+  keywordstyle = \bfseries\color{keyword},
+  stringstyle  = \color{string},
+  commentstyle = \itshape\color{comment},
+  emphstyle    = [1]\itshape\color{emph1},
+  emphstyle    = [2]\color{emph2}
+}
+\lstdefinestyle{style@kotlin}{
+  language          = Kotlin,
+  showspaces        = false,
+  showtabs          = false,
+  breaklines        = true,
+  showstringspaces  = false,
+  breakatwhitespace = true,
+  % basewidth    = 0.54em,
+  basicstyle   = \small\ttfamily,
+  emphstyle    = [1]\itshape\color{yzlpink},
+  emphstyle    = [2]\color{yzlred}
+}
+\lstdefinestyle{style@latex}{
+  language     = [latex]TeX,
+  alsoletter   = {*},
+  % basewidth    = 0.54em,
+  basicstyle   = \small\ttfamily,
+  keywordstyle = \bfseries\color{keyword},
+  commentstyle = \itshape\color{comment},
+  texcsstyle   = *\color{texcs},
+  emphstyle    = [1]\itshape\color{emph1},
+  emphstyle    = [2]\color{emph2}
+}
+\lstdefinestyle{style@inline}{
+  basicstyle   = \ttfamily\color{inline},
+  keepspaces   = true
+}
+\lstnewenvironment{texcode}[1][]{\lstset{
+  style        = style@latex,
+  gobble       = 2,
+  morekeywords = {\documentclass,\usepackage,\begin,\end},#1}}{}
+\lstnewenvironment{javacode}[1][]{\lstset{
+  style        = style@java,
+  morekeywords = {},#1}}{}
+\lstnewenvironment{kotlincode}[1][]{\lstset{
+  style        = style@kotlin,
+  morekeywords = {},#1}}{}
+\lstMakeShortInline[style=style@inline]|
+
+% Hack
+% Use small caps for LaTeX symbol
+\DeclareRobustCommand{\LaTeX}{%
+  L\kern-.3em%
+  \raisebox{.2em}{\textsc{a}}\kern-.14em%
+  \TeX}
+% Compatibility with unicode-math
+\DeclareRobustCommand{\LaTeXe}{%
+  \LaTeX\kern.15em2%
+  \hbox{%
+    \if b\expandafter\@car\f@series\@nil
+      $_{\textstyle\symbf{\varepsilon}}$%
+    \else
+      $_{\textstyle\varepsilon}$%
+    \fi}}
+% PoZheHao, see https://github.com/CTeX-org/ctex-kit/issues/382
+\ExplSyntaxOn
+\xeCJK_new_class:n { PoZheHao }
+\__xeCJK_save_CJK_class:n { PoZheHao }
+\xeCJK_declare_char_class:nn { PoZheHao } { "2014 }
+\seq_map_inline:Nn \g__xeCJK_class_seq
+  {
+    \str_if_eq:nnF {#1} { PoZheHao }
+      {
+        \xeCJK_copy_inter_class_toks:nnnn { PoZheHao } {#1} { FullRight } {#1}
+        \xeCJK_copy_inter_class_toks:nnnn {#1} { PoZheHao } {#1} { FullRight }
+      }
+  }
+
+% Macros
+\newcommand\link[1]{\href{#1}{\faLink}}
+\newcommand\CASE[1]{{\addfontfeatures{Letters=Uppercase}#1}}
+\newcommand\jatext[1]{{\addCJKfontfeatures{Language=Japanese}#1}}
+\newcommand\zhparen[1]{（\raisebox{0.1ex}{#1}）}
+\newcommand\enparen[1]{\CASE{(}#1\CASE{)}}
+\newcommand\pkg[1]{\texttt{#1}}
+\newcommand\usv[1]{\texttt{U+#1}}
+\newcommand\kbd[1]{{\LibertinusKey#1}}
+\DeclareRobustCommand{\nonumberfootnote}[2][]{%
+  \let\thefootnote\relax
+  \footnotetext#1{#2}}
+\renewcommand*\footnoterule{}
+
+\newcommand\XeTeX{\hologo{XeTeX}}
+\newcommand\pdfTeX{\hologo{pdfTeX}}
+\newcommand\LuaTeX{\hologo{LuaTeX}}
+\newcommand\XeLaTeX{\hologo{Xe}\kern-.13em\LaTeX{}}
+\newcommand\pdfLaTeX{pdf\LaTeX{}}
+\newcommand\LuaLaTeX{Lua\LaTeX{}}
+\newcommand\BibTeX{\hologo{BibTeX}}
+
+\endinput

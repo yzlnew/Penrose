@@ -1,0 +1,204 @@
+% !TEX program = xelatex
+\documentclass[aspectratio=169]{ctexbeamer}
+\usetheme{Yzl}
+
+\usepackage{tikz,xcolor-material}
+\usepackage[fixed]{fontawesome5}
+\usetikzlibrary{positioning,shadows,arrows.meta}
+
+\usefonttheme{professionalfonts}
+\setsansfont{Open Sans}
+\setmainfont{Sarasa UI SC}
+\setmonofont{JetBrainsMono-Regular.ttf}[
+  Path = C:/Users/11103475/AppData/Local/Microsoft/Windows/Fonts/,
+  BoldFont = JetBrainsMono-Bold.ttf,
+  ItalicFont = JetBrainsMono-Italic.ttf,
+  BoldItalicFont = JetBrainsMono-Bold-Italic.ttf]
+\setmathfont{LibertinusMath-Regular.otf}
+\setCJKmainfont{Sarasa UI SC}
+\setCJKmonofont{Sarasa Mono SC}
+
+\include{google}
+\definecolor{android}{HTML}{30d780}
+
+% \newfontfamily\opensans{Open Sans}
+% \newcommand{\google}{{\bfseries\opensans{\color{GoogleBlue}G}{\color{GoogleRed}o}%
+%   {\color{GoogleYellow}o}{\color{GoogleBlue}g}{\color{GoogleGreen}l}{\color{GoogleRed}e}}}
+
+
+\title{\ttfamily{Kotlin} 入坑指北}
+\date{\today}
+\author{\bfseries 叶至灵}
+% \institute{AI 系统中心}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}[c]
+    \frametitle{目录}
+    \bfseries
+    \tableofcontents[hideallsubsections]
+    \thispagestyle{empty}
+\end{frame}
+
+\section{为什么选择 \ttfamily{Kotlin}}%
+\begin{frame}[fragile]
+    \frametitle{历史}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{2011} |JetBrains| 发布，面向 JVM
+                \item \textbf{2016} |v1.0| 发布
+                \item \textbf{2017} \google{} 宣布在{\color{android}\faAndroid}Android 提供 Kotlin 的最佳支持
+                \item \textbf{2019} 已作为{\color{android}\faAndroid}Android 开发的推荐语言
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+            \begin{center}
+                \includegraphics[height=1cm]{fig/Kotlin}\\
+                \vspace{12pt}
+                \includegraphics[height=2cm]{fig/android}
+            \end{center}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[t,fragile]
+    \frametitle{特性}
+    \begin{quotebox}
+        让开发人员更快乐的一门现代编程语言$^1$。
+    \end{quotebox}
+    \nonumberfootnote{$^1$出自 Kotlin 语言中文站\link{https://www.kotlincn.net/}}
+    \vspace{12pt}
+    \begin{columns}[t]
+        \begin{column}{0.4\textwidth}
+            \begin{block}{\faCut 简洁}
+                数据类\\
+                函数式编程\\
+                单例
+            \end{block}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{block}{\faHardHat 安全}
+                空安全\\
+                自动类型转换
+            \end{block}
+        \end{column}
+    \end{columns}
+    \begin{columns}[t]
+        \begin{column}{0.4\textwidth}
+            \begin{block}{\faPuzzlePiece 互操作性}
+                Java\\
+                Android
+            \end{block}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{block}{\faWrench 工具友好}
+                Java IDE\\
+                命令行\\
+                Jupyter
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{Why Kotlin?}}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item 越来越多应用通过 |Kotlin| 开发
+                \item 用更\textcolor{yzlblue}{短}的代码写出更\textcolor{yzlblue}{安全}的应用
+                \item 学习现代编程语言的新特性\\类型推断、函数式编程、协程……
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+            \begin{center}
+                \includegraphics[height=3cm]{fig/apps.png}
+            \end{center}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{和NPE说再见}
+
+\section{再短一点}
+
+\section{Fun with Android}
+
+\begin{frame}[fragile]
+\frametitle{示例}
+\begin{kotlincode}[basicstyle=\scriptsize\ttfamily,emph={[1]level}]
+/**
+ * 按照层级取出编码
+ *
+ * eg. "000a00".extract(2) -> "000a"
+ */
+fun String.extact(level: Int) = when (level) {
+    0 -> this
+    else -> this.substring(0, 2 * level)
+}
+\end{kotlincode}
+\end{frame}
+
+\section{参考}
+\begin{frame}[fragile]
+\frametitle{参考文献}
+\begin{multicols}{2}
+\newcommand\BOOK[1]{\textbf{#1}}
+\newcommand\TAG[1]{[#1]}
+\begin{thebibliography}{99}
+  \bibitem{}
+    林莲枝．
+    \newblock \BOOK{漫谈 \LaTeX{} 排版常见概念误区：别把 \LaTeX{} 当 Word 用！}\TAG{EB/OL}. 2018.
+    \newblock PDF:
+      \href{http://static.latexstudio.net/wp-content/uploads/2018/03/LianTze-presentation-0320-forReading.pdf}{\faDownload}
+  \bibitem{}
+    Wikibooks.
+    \newblock \BOOK{\LaTeX{}---Wikibooks, The Free Textbook Project} \TAG{EB/OL}.
+    \newblock \url{https://en.wikibooks.org/wiki/LaTeX}
+  \bibitem{}
+    刘庆．
+    \newblock \BOOK{孔雀计划：中文字体排印的思路} \TAG{EB/OL}.
+    \newblock \url{https://thetype.com/kongque}
+\end{thebibliography}
+\end{multicols}
+\end{frame}
+
+\begin{frame}{关于}
+\begin{table}[]
+\begin{tabular}{cll}
+\faPaintRoller & \textbf{主题}     & Yzl            \\
+\faFont        & \textbf{正文字体} & 更纱黑体 + Roboto  \\
+\faTextWidth   & \textbf{等宽字体} & \texttt{JetBrains Mono} \\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[c,fragile]
+\frametitle{调色板}
+\begin{center}
+\colorpalette[primary palette={yzlblue,yzlgreen,yzlgray}, secondary palette={},
+primary variation=logoyellow, init text color=white, title text color=logoblack, title font=\bfseries, variation font=\ttfamily]{}
+\colorpalette[primary palette={yzlred,yzlorange,yzlpink}, secondary palette={},
+primary variation=logoblack, init text color=white, title text color=logoyellow, title font=\bfseries, variation font=\ttfamily]{}
+\end{center}
+\end{frame}
+
+\begin{frame}[standout]
+\begin{center}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}
+        \node[anchor=center,inner sep=0,opacity=0.5] at (current page.center) {\includegraphics[width=4cm]{fig/logo_color.pdf}};
+        \node[align=center,logoblack,font={\Huge\ttfamily}] at (current page.center) {Happy \textit{\textbackslash Coding}};
+    \end{tikzpicture}
+\end{center}
+\end{frame}
+
+\end{document}
