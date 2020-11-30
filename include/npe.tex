@@ -1,3 +1,25 @@
+\begin{frame}[fragile]
+\frametitle{开始之前}
+\begin{quotebox}
+    |val| 表示变量只读，|var| 表示变量可重新赋值
+\end{quotebox}
+\begin{kotlincode}[basicstyle=\scriptsize\ttfamily]
+    val a: Int = 1  // 立即赋值
+    val b = 2   // 自动推断出 `Int` 类型
+    var x = 5 // 自动推断出 `Int` 类型
+    x += 1
+\end{kotlincode}
+\begin{quotebox}
+    用 |:| 表示类型，可自动推断时可省略
+\end{quotebox}
+\begin{kotlincode}[basicstyle=\scriptsize\ttfamily]
+    fun sum(a: Int, b: Int): Int {
+        return a + b
+    }
+    // 用表达式作为函数体
+    fun sum(a: Int, b: Int) = a + b
+\end{kotlincode}
+\end{frame}
 \section{和NPE说再见}
 \begin{frame}[fragile]
     \frametitle{空引用异常}
