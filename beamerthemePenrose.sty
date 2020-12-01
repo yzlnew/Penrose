@@ -1,10 +1,10 @@
-% File              : beamerthemeYzl.sty
+% File              : beamerthemePenrose.sty
 % Author            : @yzlnew <yzlnew@gmail.com>
-% Date              : 06.01.2020
-% Last Modified Date: 24.11.2020
+% Date              : 01.12.2020
+% Last Modified Date: 01.12.2020
 % Last Modified By  : @yzlnew <yzlnew@gmail.com>
-% Adapted from Stone Zeng
-\ProvidesPackage{beamerthemeYzl}
+% Adapted from Stone Zeng's latex-talk with metropolis theme
+\ProvidesPackage{beamerthemePenrose}
 
 \usetheme[progressbar=none]{metropolis}
 
@@ -14,29 +14,28 @@
 \RequirePackage[fixed]{fontawesome5}
 \RequirePackage{graphicx,tcolorbox} %Loading the package
 \tcbuselibrary{skins} % skins for tcolorbox
-\graphicspath{{fig/}}
 
 % Colors
 \definecolor{logoyellow}{HTML}{ffc805}
 \definecolor{logoblack}{HTML}{323337}
-\definecolor{yzlblue}{HTML}{0496FF}
-\definecolor{yzlgreen}{HTML}{709255}
-\definecolor{yzlred}{HTML}{DB4C40}
-\definecolor{yzlpink}{HTML}{FBACBE}
-\definecolor{yzlorange}{HTML}{FC814A}
-\definecolor{yzlyellow}{HTML}{ffc805}
-\definecolor{yzlgray}{HTML}{BBBAC6}
-\colorlet{keyword}{yzlblue}
-\colorlet{comment}{yzlgray}
-\colorlet{texcs}{yzlred}
-\colorlet{string}{yzlgreen}
-\colorlet{emph1}{yzlorange}
-\colorlet{emph2}{yzlpink}
-\colorlet{inline}{yzlblue}
+\definecolor{penroseblue}{HTML}{0496FF}
+\definecolor{penrosegreen}{HTML}{709255}
+\definecolor{penrosered}{HTML}{DB4C40}
+\definecolor{penrosepink}{HTML}{FBACBE}
+\definecolor{penroseorange}{HTML}{FC814A}
+\definecolor{penroseyellow}{HTML}{ffc805}
+\definecolor{penrosegray}{HTML}{BBBAC6}
+\colorlet{keyword}{penroseblue}
+\colorlet{comment}{penrosegray}
+\colorlet{texcs}{penrosered}
+\colorlet{string}{penrosegreen}
+\colorlet{emph1}{penroseorange}
+\colorlet{emph2}{penrosepink}
+\colorlet{inline}{penroseblue}
 
 % Tcolorbox
-\newtcbox{\inlinebox}[1][yzlblue]{on line,colback=#1!20,colframe=#1,coltext=logoblack,arc=10pt}
-\newtcolorbox{quotebox}[1][yzlblue]{blanker,before skip=6pt,after skip=6pt,borderline west={3mm}{0pt}{#1},bottomrule=3mm,leftrule=5mm}
+\newtcbox{\inlinebox}[1][penroseblue]{on line,colback=#1!20,colframe=#1,coltext=logoblack,arc=10pt}
+\newtcolorbox{quotebox}[1][penroseblue]{blanker,before skip=6pt,after skip=6pt,borderline west={3mm}{0pt}{#1},bottomrule=3mm,leftrule=5mm}
 
 % Beamer settings
 \renewcommand{\metropolis@colors@dark}{
@@ -84,25 +83,25 @@ series=\normalfont}
   fg=logoyellow,
   bg=palette primary.bg!50!black!30
 }
-\setbeamercolor{qed symbol}{fg=yzlgreen}
-\setbeamercolor{alerted text}{fg=yzlred}
-\setbeamercolor{example text}{fg=yzlblue}
+\setbeamercolor{qed symbol}{fg=penrosegreen}
+\setbeamercolor{alerted text}{fg=penrosered}
+\setbeamercolor{example text}{fg=penroseblue}
 \AtBeginEnvironment{theorem}{%
-  \setbeamercolor{block title}{fg=yzlgreen}
+  \setbeamercolor{block title}{fg=penrosegreen}
 }
 \AtBeginEnvironment{proof}{%
-  \setbeamercolor{block title}{fg=yzlgreen}
+  \setbeamercolor{block title}{fg=penrosegreen}
 }
 \setbeamertemplate{itemize/enumerate subbody begin}{\footnotesize}
 \setbeamertemplate{caption}{\parbox{\textwidth}{\centering\insertcaption}\par}
 \setbeamertemplate{bibliography item}[text]
 \titlegraphic{%
-  \includegraphics[height=4ex]{penrose_black}
+    \includegraphics[height=4ex]{res/penrose_black}
 }
 \addtobeamertemplate{title page}{
     \tikz[remember picture,overlay]
     \node[opacity=0.8,inner sep=0pt] at (10.5,-8){
-    \includegraphics[height=6cm]{city}};
+    \includegraphics[height=6cm]{res/city}};
 }
 
 \setbeamertemplate{frametitle}{%
@@ -118,7 +117,7 @@ series=\normalfont}
   \nolinebreak%
   \metropolis@frametitlestrut@end%
   \hfill
-  \includegraphics[height=2ex,keepaspectratio]{logo_color}
+  \includegraphics[height=2ex,keepaspectratio]{res/penrose_color}
   \end{beamercolorbox}%
 }
 
@@ -131,19 +130,19 @@ series=\normalfont}
 % Kotlin Support
 \lstdefinelanguage{Kotlin}{
   comment=[l]{//},
-  commentstyle={\color{yzlgray}\ttfamily},
+  commentstyle={\color{penrosegray}\ttfamily},
   emph={delegate, filter, first, firstOrNull, forEach, lazy, map, mapNotNull, println, return@},
-  emphstyle={\color{yzlred}},
+  emphstyle={\color{penrosered}},
   identifierstyle=\color{logoblack},
   keywords={abstract, actual, as, as?, break, by, class, companion, continue, data, do, dynamic, else, enum, expect, false, final, for, fun, get, if, import, in, interface, internal, is, null, object, override, package, private, public, return, set, super, suspend, this, throw, true, try, typealias, val, var, vararg, when, where, while},
-  keywordstyle={\color{yzlblue}\bfseries},
+  keywordstyle={\color{penroseblue}\bfseries},
   morecomment=[s]{/*}{*/},
   morestring=[b]",
   morestring=[s]{"""*}{*"""},
   ndkeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic, Array, Byte, Double, Float, Int, Integer, Iterable, Long, Runnable, Short, String},
-  ndkeywordstyle={\color{yzlorange}\bfseries},
+  ndkeywordstyle={\color{penroseorange}\bfseries},
   sensitive=true,
-  stringstyle={\color{yzlgreen}\ttfamily},
+  stringstyle={\color{penrosegreen}\ttfamily},
 }
 \lstdefinestyle{style@java}{
   language          = Java,

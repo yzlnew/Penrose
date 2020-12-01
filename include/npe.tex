@@ -23,7 +23,7 @@
 \section{和NPE说再见}
 \begin{frame}[fragile]
     \frametitle{空引用异常}
-    \begin{quotebox}[yzlred]
+    \begin{quotebox}[penrosered]
         Java 最常见的运行时异常
     \end{quotebox}
     \begin{javacode}[basicstyle=\scriptsize\ttfamily,emph={[1]sample}]
@@ -47,7 +47,7 @@
 \begin{frame}[fragile]
     \frametitle{Elvis 操作符}
     \begin{quotebox}
-        \textcolor{yzlblue}{\texttt{?:}}用来缩写 |if not null and else|
+        \textcolor{penroseblue}{\texttt{?:}}用来缩写 |if not null and else|
     \end{quotebox}
     \begin{kotlincode}[basicstyle=\scriptsize\ttfamily]
     // 返回值
@@ -76,6 +76,6 @@
     val nullableList: List<Int?> = listOf(1, 2, null, 4)
     val intList: List<Int> = nullableList.filterNotNull()
     \end{kotlincode}
-    \nonumberfootnote{\faExclamationCircle{}如非必要，请勿使用\textcolor{yzlred}{\texttt{!!}}操作符}
+    \nonumberfootnote{\faExclamationCircle{}如非必要，请勿使用\textcolor{penrosered}{\texttt{!!}}操作符}
 \end{frame}
 
